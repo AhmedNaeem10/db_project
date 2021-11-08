@@ -1,13 +1,7 @@
-
-
 import React, {useState} from 'react';
-import './Signup.css';
+// import './Signup.css';
 import InputField from '../components/InputField';
 import axios from 'axios';
-
-
-
-
 
 export default function Signup(props) {
   const [data, setData] = useState({
@@ -51,7 +45,7 @@ export default function Signup(props) {
         drawerClasses = 'side-drawer open';
     }
     return(  
-      <div className={drawerClasses} style={{borderRadius:10}}>
+      <div>
       <h1 className="text-2x1 font-medium text-primary mt-4 mb-12 text-center">
         Registration
       </h1>

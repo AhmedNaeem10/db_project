@@ -26,12 +26,9 @@ class Home extends Component {
     if (this.state.sideDrawerOpen) {
       backdrop = <Backdrop click={this.backdropEvent} />
     }
-    const handleLogin = (val) => {
-     this.setState({isLogin: !val})
-    }
     return (
       <div style={{ backgroundImage: `url(${background})` }}>
-        <Header drawerEvent={this.drawerEvent} handleLogin={()=>handleLogin(this.state.isLogin)} />
+        <Header drawerEvent={this.drawerEvent} />
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: 100 }}>
           <div style={{ width: "90%" }}>
             {/* current event info */}
@@ -47,7 +44,7 @@ class Home extends Component {
         <script type={"text/javascript"} src={"./particles.js"}></script>
         <script type={"text/javascript"} src={"./app.js"}></script>
         <div style={{position:"absolute", height: "100%", display:"flex", alignItems:"center", justifyContent:"center"}}>
-        <SuperTab show={this.state.sideDrawerOpen} handleLogin={()=>handleLogin(this.state.isLogin)}/>
+        <SuperTab show={this.state.sideDrawerOpen} />
         </div>
         {backdrop}
       </div>

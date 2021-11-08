@@ -90,6 +90,32 @@ app.post('/signup', (req,res)=>{
     });
 });
 
+app.get('/playerProfile/:id', (req,res) => {
+  const player_id = req.params.id;
+  const sql = `select * from gamesystem.players where id = ?`;
+
+  const value = [player_id];
+
+  con.query(sql, [value], (err, docs) => {
+    if (err) {
+      return res.status(400).json({
+        status: 'error',
+        error: {
+          message: err.message,
+        },
+      });
+    }
+    console.log(docs);
+    res.status(200).json({
+      status: 'success',
+      data: {
+        message: 'Users Data',
+        docs,
+      },
+    });
+  });
+});
+
 app.post('/login', (req, res) => {
     let userName = req.body.email;
     let password = req.body.password;

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import InputField from "../components/InputField";
+import {Link, Redirect} from 'react-router-dom';
 export default function Login() {
   const [data, setData] = useState({ email: "", password: "" });
-
+  const [redirect, setRedirect] = useState(false);
   const handleChange = (e) => {
     if (e.target.name === "email") setData({ ...data, email: e.target.value });
     else setData({ ...data, password: e.target.value });
@@ -21,6 +22,7 @@ export default function Login() {
       if (res.data.status === "success") {
         setData({ email: "", password: "" });
         //redirect to dashboard
+        setRedirect(true);
         alert(res.data.status);
 
       } else {
@@ -60,6 +62,7 @@ export default function Login() {
           >
             Login
           </button>
+          {redirect && <Redirect to="/dashboard" />}
         </div>
       </form>
     </>
